@@ -1,0 +1,18 @@
+Starting the 'Apache2.4' service
+The 'Apache2.4' service is running.
+ly determine the server's fully qualified domain name, using fe80::49a1:7164:63eb:8de9. Set the 'ServerName' directive globally to suppress this message
+[Sun Jan 14 23:03:33.431658 2018] [mpm_winnt:notice] [pid 28664:tid 776] AH00455: Apache/2.4.29 (Win64) configured -- resuming normal operations
+[Sun Jan 14 23:03:33.432661 2018] [mpm_winnt:notice] [pid 28664:tid 776] AH00456: Apache Lounge VC15 Server built: Nov  3 2017 11:12:00
+[Sun Jan 14 23:03:33.432661 2018] [core:notice] [pid 28664:tid 776] AH00094: Command line: 'C:\\Apache24\\bin\\httpd.exe -d C:/Apache24'
+[Sun Jan 14 23:03:33.435669 2018] [mpm_winnt:notice] [pid 28664:tid 776] AH00418: Parent: Created child process 31220
+AH00558: httpd.exe: Could not reliably determine the server's fully qualified domain name, using fe80::49a1:7164:63eb:8de9. Set the 'ServerName' directive globally to suppress this message
+AH00558: httpd.exe: Could not reliably determine the server's fully qualified domain name, using fe80::49a1:7164:63eb:8de9. Set the 'ServerName' directive globally to suppress this message
+[Sun Jan 14 23:03:36.704364 2018] [mpm_winnt:notice] [pid 31220:tid 720] AH00354: Child: Starting 64 worker threads.
+[Sun Jan 14 23:21:10.964013 2018] [mpm_winnt:notice] [pid 28664:tid 776] AH00428: Parent: child process 31220 exited with status 1 -- Restarting.
+AH00558: httpd.exe: Could not reliably determine the server's fully qualified domain name, using fe80::49a1:7164:63eb:8de9. Set the 'ServerName' directive globally to suppress this message
+[Sun Jan 14 23:21:11.821295 2018] [mpm_winnt:notice] [pid 28664:tid 776] AH00455: Apache/2.4.29 (Win64) configured -- resuming normal operations
+[Sun Jan 14 23:21:11.821295 2018] [mpm_winnt:notice] [pid 28664:tid 776] AH00456: Apache Lounge VC15 Server built: Nov  3 2017 11:12:00
+[Sun Jan 14 23:21:11.821295 2018] [core:notice] [pid 28664:tid 776] AH00094: Command line: 'C:\\Apache24\\bin\\httpd.exe -d C:/Apache24'
+[Sun Jan 14 23:21:11.825307 2018] [mpm_winnt:notice] [pid 28664:tid 776] AH00418: Parent: Created child process 21352
+AH00558: httpd.exe: Could not reliably determine the server's fully qualified domain name, using fe80::49a1:7164:63eb:8de9. Set the 'ServerName' directive globally to suppress this message
+[Sun Jan 14 23:21:14.923549 2018] [mpm_winnt:crit] [pid 28664:tid 776] AH00419: master_main: create child process failed. Exiting.
