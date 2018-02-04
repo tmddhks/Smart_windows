@@ -2,13 +2,15 @@
     <string name="app_name">TeamProject</string>
 
     <!--날씨정보-->
-    <string name="weatherinfo_title">Weather</string>
+    <string name="weatherinfo_title">Weather info</string>
     <string name="weatherinfo_weather">기상청 날씨 정보</string>
     <string name="weatherinfo_sensor">센서 날씨 정보</string>
 
     <!--리모컨-->
+
     <string name="remote_controller_title">Remote Controller</string>
     <string name="remote_controller_onoff">ON / OFF</string>
     <string name="remote_controller_open">open</string>
     <string name="remote_controller_close">close</string>
+    <string name="remote_controller_textview_text1">현재 상태</string>
 </resources>

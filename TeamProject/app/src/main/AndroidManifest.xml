@@ -18,10 +18,11 @@
         </activity>
         <activity
             android:name=".WeatherActivity"
-            android:label="@string/weatherinfo_title" />
+            android:label="@string/weatherinfo_title"></activity>
         <activity
             android:name=".RemoteControllerActivity"
-            android:label="@string/remote_controller_title"/>
+            android:label="@string/remote_controller_title"></activity>
+
     </application>
 
 </manifest>
