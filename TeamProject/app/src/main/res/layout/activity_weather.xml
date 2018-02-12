@@ -25,14 +25,14 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
+                    android:layout_gravity="center"
                     android:text="@string/weatherinfo_title"
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     app:scale_height="50"
-                    app:scale_left="20"
+                    app:scale_left="0"
                     app:scale_textsize="40"
-                    app:scale_top="20"
+                    app:scale_top="0"
                     app:scale_width="250" />
 
 
