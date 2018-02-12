@@ -76,6 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:background="@color/colorless"
             android:src="@drawable/close"
             app:scale_height="360"
             app:scale_width="400" />
@@ -84,7 +85,9 @@
             android:id="@+id/ibOpen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/right"
+            android:background="@color/colorless"
+            android:scaleType="centerInside"
+            android:src="@drawable/right"
             app:scale_height="200"
             app:scale_left="730"
             app:scale_top="170"
@@ -94,11 +97,39 @@
             android:id="@+id/ibClose"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/left"
+            android:background="@color/colorless"
+            android:scaleType="centerInside"
+            android:src="@drawable/left"
             app:scale_height="200"
             app:scale_left="147"
             app:scale_top="170"
             app:scale_width="200" />
+
+    </com.ssomai.android.scalablelayout.ScalableLayout>
+
+    <com.ssomai.android.scalablelayout.ScalableLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_side"
+        android:background="@color/white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sl2"
+        app:scale_base_height="550"
+        app:scale_base_width="1080">
+
+        <ImageButton
+            android:id="@+id/ibHelpCall"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:background="@color/colorless"
+            android:scaleType="centerInside"
+            android:src="@drawable/alarm"
+            app:scale_height="100"
+            app:scale_left="0"
+            app:scale_top="0"
+            app:scale_width="100" />
 
     </com.ssomai.android.scalablelayout.ScalableLayout>
 
