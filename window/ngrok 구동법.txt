@@ -1,0 +1,1 @@
+서버 실행 후 ngrok실행하고 ngrok http 8000
