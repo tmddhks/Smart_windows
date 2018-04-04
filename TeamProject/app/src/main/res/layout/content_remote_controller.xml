@@ -8,7 +8,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.kmc.teamproject.RemoteControllerActivity">
 
-
+    <!--잠금 on/off 버튼-->
     <com.ssomai.android.scalablelayout.ScalableLayout
         android:id="@+id/sl1"
         android:layout_width="0dp"
@@ -38,8 +38,8 @@
             android:layout_gravity="center"
             android:background="@android:color/transparent"
             android:drawableBottom="@drawable/togle"
-            android:textOff=""
-            android:textOn=""
+            android:textOff="잠김"
+            android:textOn="풀림"
             app:scale_height="100"
             app:scale_left="0"
             app:scale_textsize="40"
@@ -47,6 +47,7 @@
             app:scale_width="410" />
     </com.ssomai.android.scalablelayout.ScalableLayout>
 
+    <!--현재상태와 창문을 열고 닫을 수 있는 버튼-->
     <com.ssomai.android.scalablelayout.ScalableLayout
         android:id="@+id/sl2"
         android:layout_width="0dp"
@@ -107,6 +108,7 @@
 
     </com.ssomai.android.scalablelayout.ScalableLayout>
 
+    <!--긴급전화 버튼-->
     <com.ssomai.android.scalablelayout.ScalableLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"

@@ -15,6 +15,7 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.5" />
 
+    <!--기상청 날씨 정보-->
     <com.ssomai.android.scalablelayout.ScalableLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -48,6 +49,7 @@
             app:scale_width="700" />
     </com.ssomai.android.scalablelayout.ScalableLayout>
 
+    <!--구분선-->
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -58,6 +60,7 @@
 
     </View>
 
+    <!--센서를 통한 날씨 정보-->
     <com.ssomai.android.scalablelayout.ScalableLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
