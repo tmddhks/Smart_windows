@@ -10,14 +10,14 @@
         android:orientation="horizontal">
 
 
-        <!--<EditText-->
-            <!--android:id="@+id/search"-->
-            <!--android:layout_width="189dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--/>-->
+        <EditText
+        android:id="@+id/search"
+        android:layout_width="189dp"
+        android:layout_height="wrap_content"
+        />
 
         <Button
-            android:id="@+id/weather_search"
+            android:id="@+id/okay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

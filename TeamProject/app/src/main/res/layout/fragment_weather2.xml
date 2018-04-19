@@ -11,12 +11,29 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.05" />
 
-    <TextView
+    <com.ssomai.android.scalablelayout.ScalableLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:scale_base_width="1080"
+        app:scale_base_height="100"
+        >
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/gps"
+        android:background="#00000000"
+        android:scaleType="centerInside"
+        app:scale_width="100"
+        app:scale_height="100"
+
+        />
+    </com.ssomai.android.scalablelayout.ScalableLayout>
+    <Button
         android:id="@+id/tv2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="2222"
+        android:text=""
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@+id/guideline"

@@ -31,7 +31,7 @@ public class WeatherFragment2 extends Fragment {
     public static WeatherFragment2 newInstance() {
         Bundle args = new Bundle();
 
-        WeatherFragment2 fragment=new WeatherFragment2();
+        WeatherFragment2 fragment = new WeatherFragment2();
         fragment.setArguments(args);
         return fragment;
     }
