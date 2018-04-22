@@ -1,43 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <!--<Button-->
+        <!--android:id="@+id/update"-->
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.05" />
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" />-->
 
-    <com.ssomai.android.scalablelayout.ScalableLayout
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/tvSensor"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:scale_base_width="1080"
-        app:scale_base_height="100"
-        >
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/gps"
-        android:background="#00000000"
-        android:scaleType="centerInside"
-        app:scale_width="100"
-        app:scale_height="100"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="48dp"
+        tools:ignore="MissingConstraints" />
 
-        />
-    </com.ssomai.android.scalablelayout.ScalableLayout>
-    <Button
-        android:id="@+id/tv2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text=""
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/guideline"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+
 
 </android.support.constraint.ConstraintLayout>

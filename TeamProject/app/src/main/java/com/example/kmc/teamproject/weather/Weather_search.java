@@ -32,15 +32,16 @@ public class Weather_search extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.weather_search);
-        Button btn = (Button) findViewById(R.id.weather_search);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//                LinearLayout linearLayout = (LinearLayout) inflater.inflate(R.layout.fragment_weather1, null);
-//                editText = (EditText) linearLayout.findViewById(R.id.search);
-            }
-        });
+        //지역날씨 검색 버튼 이벤트
+//        Button btn = (Button) findViewById(R.id.weather_search);
+//        btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+////                LinearLayout linearLayout = (LinearLayout) inflater.inflate(R.layout.fragment_weather1, null);
+////                editText = (EditText) linearLayout.findViewById(R.id.search);
+//            }
+//        });
     }
 
 

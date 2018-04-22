@@ -45,7 +45,9 @@ public class WeatherFragment1 extends Fragment {
         // Required empty public constructor
         handler = new Handler();
     }
+
     Button button;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -56,23 +58,22 @@ public class WeatherFragment1 extends Fragment {
         detailsField = (TextView) rootView.findViewById(R.id.details_field);
         currentTemperatureField = (TextView) rootView.findViewById(R.id.current_temperature_field);
         weatherIcon = (TextView) rootView.findViewById(R.id.weather_icon);
-        button = (Button) rootView.findViewById(R.id.weather_search);
-
-        button.setOnClickListener(myListener);
+//        button = (Button) rootView.findViewById(R.id.weather_search);
+//        button.setOnClickListener(myListener);
 
         weatherIcon.setTypeface(weatherFont);
         return rootView;
     }
-    View.OnClickListener myListener = new View.OnClickListener()
-    {
-        @Override
-        public void onClick(View v)
-        {
+//    View.OnClickListener myListener = new View.OnClickListener()
+//    {
+//        @Override
+//        public void onClick(View v)
+//        {
 //            button.setSelected(false);
 //            Intent intent = new Intent(WeatherFragmen1.this, Weather_search.class);
 //            startActivity(intent);
-        }
-    };
+//        }
+//    };
 
 
     @Override
