@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    #'smart.models.bbs',
+    'smart.data',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +56,7 @@ ROOT_URLCONF = 'window.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['C:/git_yychani/window/templates'],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -127,7 +127,7 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = False
-# ÇÑ±¹ ½Ã°£À» ¹Þ±â À§ÇØ use timezoneÀ» false
+# ï¿½Ñ±ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½Þ±ï¿½ ï¿½ï¿½ï¿½ï¿½ use timezoneï¿½ï¿½ false
 
 
 # Static files (CSS, JavaScript, Images)

@@ -2,9 +2,26 @@ from django.db import models
 # Create your models here. 
 class Windowmodel(models.Model):
     created = models.DateTimeField(auto_now_add=True)
-    temparature = models.TextField() #¿Âµµ °ª ÀúÀå ÇÊµå
-    moisture = models.TextField() # ½Àµµ °ª ÀúÀå ÇÊµå
-    finedust = models.TextField() # ¹Ì¼¼¸ÕÁö °ª ÀúÀå ÇÊµå
+    temperature = models.TextField() #ì˜¨ë„ ê°’ ì €ì¥ í•„ë“œ
+    humidity = models.TextField() # ìŠµë„ ê°’ ì €ì¥ í•„ë“œ
+    finedust = models.TextField() # ë¯¸ì„¸ë¨¼ì§€ ê°’ ì €ì¥ í•„ë“œ
+   
+    def __str__(self):
+        return self.name
     
     class Meta : 
         ordering = ('created',)
+    
+        
+class Weathermodel(models.Model):
+    time = models.TextField()
+    weather = models.TextField() #ë‚ ì”¨ ê°’ ì €ì¥ í•„ë“œ
+    temp = models.TextField()
+    mintemp = models.TextField()
+    maxtemp = models.TextField() # ìµœì €,ìµœê³ ê¸°ì˜¨
+    hudmity = models.TextField()# ì‹ ë¢°ë„
+    
+    def __str__(self):
+        return self.name
+        
+        
