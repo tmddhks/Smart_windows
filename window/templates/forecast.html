@@ -1,0 +1,320 @@
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>최근 3일 기상예보 - Smart Window</title>
+    <style>
+      body {
+	font: normal 15px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	color: #4f6b72;
+	background: #E6EAE9;
+	}
+	
+	a {
+		color: #c75f3e;
+	}
+	
+	#mytable {
+		width: 80%;
+		padding: 20px;
+		margin: 20px;
+	}
+	
+	caption {
+		padding: 0 0 5px 0;
+		width: 80%px;	 
+		font: italic 15px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+		text-align: right;
+	}
+	
+	th {
+		font: bold 15px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+		color: #4f6b72;
+		border-right: 1px solid #C1DAD7;
+		border-bottom: 1px solid #C1DAD7;
+		border-top: 1px solid #C1DAD7;
+		letter-spacing: 2px;
+		text-transform: uppercase;
+		text-align: left;
+		padding: 6px 6px 6px 12px;
+		background: #CAE8EA url(/data/201011/IJ12896448126037/bg_header.jpg) no-repeat;
+	}
+	
+	th.nobg {
+		border-top: 20px;
+		border-left:20px;
+		border-right: 1px solid #C1DAD7;
+		background: none;
+	}
+	
+	td {
+		border-right: 1px solid #C1DAD7;
+		border-bottom: 1px solid #C1DAD7;
+		background: #fff;
+		padding: 6px 6px 6px 12px;
+		color: #4f6b72;
+	}
+	
+	
+	td.alt {
+		background: #F5FAFA;
+		color: #797268;
+	}
+	
+	th.spec {
+		border-left: 1px solid #C1DAD7;
+		border-top: 0;
+		background: #fff url(/data/201011/IJ12896448126037/bullet1.gif) no-repeat;
+		font: bold 15px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	}
+	
+	th.specalt {
+		border-left: 1px solid #C1DAD7;
+		border-top: 0;
+		background: #f5fafa url(/data/201011/IJ12896448126037/bullet2.gif) no-repeat;
+		font: bold 15px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+		color: #797268;
+	}
+    body { margin: 0; }
+	.zeta-menu-bar {
+	  background: #A7EEFF;
+	  display: inline-block;
+	  width: 42.6%;
+	  height: 49px;
+	  margin: 45px;
+	  font: bold 15pt 맑은 고딕;
+	}
+	.zeta-menu { margin: 0; padding: 0; }
+	.zeta-menu li {
+	  float: left;
+	  list-style:none;
+	  position: relative;
+	}
+	.zeta-menu li:hover { background: #00BFFF; }
+	.zeta-menu li.expand { background: #1EA4FF ; }
+	.zeta-menu li.expand>a { color: #00BFFF; }
+	.zeta-menu a {
+	  color: black;
+	  display: block;
+	  padding: 10px 20px;
+	  text-decoration: none;
+	}
+	.zeta-menu ul {
+	  background: #eee;
+	  border: 1px solid silver;
+	  display: none;
+	  padding: 10px;
+	  position: absolute;
+	  left: 0;
+	  top: 100%;
+	  width: 180px;
+	}
+	.zeta-menu ul li { float: none; }
+	.zeta-menu ul li.expand { background: #ddd; }
+	.zeta-menu ul li.expand a { 
+	color: black;
+	font: bold 13pt 맑은 고딕;
+	 }
+	.zeta-menu ul a { color: black; }
+	.zeta-menu ul ul { left: 100%; top: 0; }
+	</style>
+	 
+	<script src="//code.jquery.com/jquery.min.js"></script>
+	<script>
+	$(function(){
+		$(document).mouseup(function(e) {
+			if ($(e.target).parents('.zeta-menu').length == 0) {
+				$('.zeta-menu li').removeClass('expand');
+				$('.zeta-menu ul').hide();
+			}
+		});
+		$(".zeta-menu>li:has(ul)>a").each( function() {
+			$(this).html( $(this).html()+' &or;' );
+		});
+		$(".zeta-menu ul li:has(ul)")
+			.find("a:first")
+			.append("<p style='float:right;margin:-3px'>&#9656;</p>");
+	
+		$(".zeta-menu li>a").click(function(){
+			var li = $(this).parent();
+			var ul = li.parent()
+			ul.find('li').removeClass('expand');
+			ul.find('ul').not(li.find('ul')).hide();
+			li.children('ul').toggle();
+			if( li.children('ul').is(':visible') || li.has('ul')) {
+				li.addClass('expand');
+			}
+		});
+	});
+	</script>  
+    </style>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+   <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+   <script src="http://code.highcharts.com/highcharts.js"></script> 
+   <script src="http://code.highcharts.com/modules/data.js"></script>    
+  </head>
+  <body>
+  <center>
+	  <div style="position: relative; z-index: 2" class='zeta-menu-bar'>
+	  
+	  <ul class="zeta-menu">
+	    <li><a href="">홈</a></li>
+	    <li><a href="forecast">지역별 날씨</a></li>
+	    <li><a href="#2">미세먼지 농도 지역 [ㄱ-ㅇ]</a>
+	      <ul>
+	        <li><a href="finedust_gapyeong">가평군</a></li>
+	        <li><a href="finedust_goyang">고양시</a></li>
+	        <li><a href="finedust_gwacheon">과천시</a></li>
+	        <li><a href="finedust_gwangmyung">광명시</a></li>
+	        <li><a href="finedust_gwangju">광주시</a></li>
+	        <li><a href="finedust_guri">구리시</a></li>
+	        <li><a href="finedust_gunpo">군포시</a></li>
+	        <li><a href="finedust_gimpo">김포시</a></li>
+	        <li><a href="finedust_namyangju">남양주시</a></li>
+	        <li><a href="finedust_dongducheon">동두천시</a></li>
+	        <li><a href="finedust_bucheon">부천시</a></li>
+	        <li><a href="finedust_sungnam">성남시</a></li>
+	        <li><a href="finedust_suwon">수원시</a></li>
+	        <li><a href="finedust_siheung">시흥시</a></li>
+	        <li><a href="finedust_ansan">안산시</a></li>
+	      </ul>
+	    </li>
+	    <li><a href="#2">미세먼지 농도 지역 [ㅇ-ㅎ]</a>
+	      <ul>
+	        <li><a href="finedust_ansung">안성시</a></li>
+	        <li><a href="finedust_anyang">안양시</a></li>
+	        <li><a href="finedust_yangju">양주시</a></li>
+	        <li><a href="finedust_yangpyeong">양평군</a></li>
+	        <li><a href="finedust_yeoju">여주군</a></li>
+	        <li><a href="finedust_yeoncheon">연천군</a></li>
+	        <li><a href="finedust_osan">오산시</a></li>
+	        <li><a href="finedust_yongin">용인시</a></li>
+	        <li><a href="finedust_hewang">의왕시</a></li>
+	        <li><a href="finedust_hejungbu">의정부시</a></li>
+	        <li><a href="finedust_icheon">이천시</a></li>
+	        <li><a href="finedust_paju">파주시</a></li>
+	        <li><a href="finedust_pyeongtack">평택시</a></li>
+	        <li><a href="finedust_pocheon">포천시</a></li>
+	        <li><a href="finedust_hanam">하남시</a></li>
+	        <li><a href="finedust_hwasung">화성시</a></li>
+	      </ul>
+	    </li>
+	  </ul>
+	</div>
+	</center> 
+	  
+  <div>
+  <br><p style="font: bold  6.0em/1.0em 맑은 고딕; text-align : center;"></br>
+	최근 3일간 시흥의 기상예보</p>
+  </div>
+  <br><div id="container" style="width: 100%; height: 400px; margin: 0 auto; position: relative; z-index: 1"></div>
+	<script language="JavaScript">
+	$(document).ready(function() { 
+   		var data = {
+      		table: 'datatable'
+   		};
+   		var chart = {
+      		type: 'line'
+   		};
+
+
+   		var title = {
+      		text: '3일간 온도 습도 변화'   
+   		};      
+   		var yAxis = {
+      		allowDecimals: false,
+      		title: {
+         		text: 'Temperature & Hudmity'
+      		}
+   		};
+   		var tooltip = {
+      		formatter: function () {
+         		return '<b>' + this.series.name + '</b><br/>' +
+            		this.point.y + ' ' + this.point.name.toLowerCase();
+      		}
+   		};
+   		var credits = {
+      		enabled: false
+   		};  
+      
+   		var json = {};   
+   		json.chart = chart; 
+   		json.title = title; 
+   		json.data = data;
+   		json.yAxis = yAxis;
+   		json.credits = credits;  
+   		json.tooltip = tooltip;  
+   		$('#container').highcharts(json);
+		});
+
+		</script>
+  <div></br>
+  <div>
+  <br><p style="font: bold  3.0em/1.0em 맑은 고딕; text-align : center;"></br>
+	기상 예보</p>
+  </div>
+  <table style="width: 80%; margin-left: auto; margin-right: auto; text-align: center;">
+  <caption></caption>
+  <thead style = "text-align: center">
+        <tr>
+          <th class="time"; style = "text-align: center">측정 시간</th>
+          <th class="weather"; style = "text-align: center">날씨</th>
+          <th class="temp"; style = "text-align: center">시간별 온도</th>
+          <th class="min"; style = "text-align: center">최저온도</th>
+          <th class="max"; style = "text-align: center">최고온도</th>
+          <th class="hudmity"; style = "text-align: center">습도</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% if forecast_text %}
+      {% for s in forecast_text%}
+		<tr>
+          <th style = "text-align: center">{{s.time}}</th>
+          <td>{{s.weather}}</td>
+          <td>{{s.temp}} ℃</td>
+          <td>{{s.mintemp}} ℃</td>
+          <td>{{s.maxtemp}} ℃</td>
+          <td>{{s.hudmity}} %</td>
+          
+        </tr>       
+        {% endfor %}
+    {% else %}
+        <p>no data</p>
+    {% endif %}
+        
+    </table>
+  </div>
+  <br><div style = "text-align: center;">
+  <input style="width: 30%; height: 50px; font-family:돋움; background-color:#eff7f9; border:1 solid #A0DBE4" type="button" name="측정 날씨" value="측정날씨" onclick="location.href='http://' + location.host+ '/weather'";>
+  <font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
+  <input style="width: 30%; height: 50px; font-family:돋움; background-color:#eff7f9; border:1 solid #A0DBE4" type="button" name="시흥미세먼지" value="시흥미세먼지" onclick="location.href='http://' + location.host+ '/weather/finedust_siheung'";></br>
+  </div>
+  </br>
+  <div>
+  <table id="datatable" style = "visibility:hidden;">
+<thead>
+<tr><th></th><th>Temperature</th><th>Humdity</th></tr>
+</thead>
+<tbody>
+{% if forecast_text %}
+	{% for i in forecast_text%}
+    	<tr><th>{{i.time}}</th><td>{{i.temp}}</td><td>{{i.hudmity}}</td></tr>
+    {% endfor %}
+	{% else %}
+    	<p>no data</p>
+{% endif %}
+</tbody>
+</table>
+  </div>
+ 
+  </body>
+</html>
+<html>
+<head>
+    
+
+
+
+
+    
+ 

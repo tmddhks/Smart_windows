@@ -1,0 +1,254 @@
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>광명시 실시간 미세먼지 - Smart Window</title>
+    
+    <style>
+ 	.box1 {
+  	float:left; width:40%;}
+ 	.box2 {
+  	display:inline-block; width: 40%;}  
+	body { margin: 0; }
+	.zeta-menu-bar {
+	  background: #A7EEFF;
+	  display: inline-block;
+	  width: 42.6%;
+	  height: 49px;
+	  margin: 45px;
+	  font: bold 15pt 맑은 고딕;
+	}
+	.zeta-menu { margin: 0; padding: 0; }
+	.zeta-menu li {
+	  float: left;
+	  list-style:none;
+	  position: relative;
+	}
+	.zeta-menu li:hover { background: #00BFFF; }
+	.zeta-menu li.expand { background: #1EA4FF ; }
+	.zeta-menu li.expand>a { color: #00BFFF; }
+	.zeta-menu a {
+	  color: black;
+	  display: block;
+	  padding: 10px 20px;
+	  text-decoration: none;
+	}
+	.zeta-menu ul {
+	  background: #eee;
+	  border: 1px solid silver;
+	  display: none;
+	  padding: 10px;
+	  position: absolute;
+	  left: 0;
+	  top: 100%;
+	  width: 180px;
+	}
+	.zeta-menu ul li { float: none; }
+	.zeta-menu ul li.expand { background: #ddd; }
+	.zeta-menu ul li.expand a { 
+	color: black;
+	font: bold 13pt 맑은 고딕;
+	 }
+	.zeta-menu ul a { color: black; }
+	.zeta-menu ul ul { left: 100%; top: 0; }
+	</style>
+	 
+	<script src="//code.jquery.com/jquery.min.js"></script>
+	<script>
+	$(function(){
+		$(document).mouseup(function(e) {
+			if ($(e.target).parents('.zeta-menu').length == 0) {
+				$('.zeta-menu li').removeClass('expand');
+				$('.zeta-menu ul').hide();
+			}
+		});
+		$(".zeta-menu>li:has(ul)>a").each( function() {
+			$(this).html( $(this).html()+' &or;' );
+		});
+		$(".zeta-menu ul li:has(ul)")
+			.find("a:first")
+			.append("<p style='float:right;margin:-3px'>&#9656;</p>");
+	
+		$(".zeta-menu li>a").click(function(){
+			var li = $(this).parent();
+			var ul = li.parent()
+			ul.find('li').removeClass('expand');
+			ul.find('ul').not(li.find('ul')).hide();
+			li.children('ul').toggle();
+			if( li.children('ul').is(':visible') || li.has('ul')) {
+				li.addClass('expand');
+			}
+		});
+	});
+	</script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+   <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+   <script src="http://code.highcharts.com/highcharts.js"></script> 
+   <script src="http://code.highcharts.com/modules/data.js"></script>  
+    </style>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">  
+  </head>
+  <body>
+  <center>
+	  <div style="text_align = center" class='zeta-menu-bar'>
+	  
+	  <ul class="zeta-menu">
+	    <li><a href="">홈</a></li>
+	    <li><a href="forecast">지역별 날씨</a></li>
+	    <li><a href="#2">미세먼지 농도 지역 [ㄱ-ㅇ]</a>
+	      <ul>
+	        <li><a href="finedust_gapyeong">가평군</a></li>
+	        <li><a href="finedust_goyang">고양시</a></li>
+	        <li><a href="finedust_gwacheon">과천시</a></li>
+	        <li><a href="finedust_gwangmyung">광명시</a></li>
+	        <li><a href="finedust_gwangju">광주시</a></li>
+	        <li><a href="finedust_guri">구리시</a></li>
+	        <li><a href="finedust_gunpo">군포시</a></li>
+	        <li><a href="finedust_gimpo">김포시</a></li>
+	        <li><a href="finedust_namyangju">남양주시</a></li>
+	        <li><a href="finedust_dongducheon">동두천시</a></li>
+	        <li><a href="finedust_bucheon">부천시</a></li>
+	        <li><a href="finedust_sungnam">성남시</a></li>
+	        <li><a href="finedust_suwon">수원시</a></li>
+	        <li><a href="finedust_siheung">시흥시</a></li>
+	        <li><a href="finedust_ansan">안산시</a></li>
+	      </ul>
+	    </li>
+	    <li><a href="#2">미세먼지 농도 지역 [ㅇ-ㅎ]</a>
+	      <ul>
+	        <li><a href="finedust_ansung">안성시</a></li>
+	        <li><a href="finedust_anyang">안양시</a></li>
+	        <li><a href="finedust_yangju">양주시</a></li>
+	        <li><a href="finedust_yangpyeong">양평군</a></li>
+	        <li><a href="finedust_yeoju">여주군</a></li>
+	        <li><a href="finedust_yeoncheon">연천군</a></li>
+	        <li><a href="finedust_osan">오산시</a></li>
+	        <li><a href="finedust_yongin">용인시</a></li>
+	        <li><a href="finedust_hewang">의왕시</a></li>
+	        <li><a href="finedust_hejungbu">의정부시</a></li>
+	        <li><a href="finedust_icheon">이천시</a></li>
+	        <li><a href="finedust_paju">파주시</a></li>
+	        <li><a href="finedust_pyeongtack">평택시</a></li>
+	        <li><a href="finedust_pocheon">포천시</a></li>
+	        <li><a href="finedust_hanam">하남시</a></li>
+	        <li><a href="finedust_hwasung">화성시</a></li>
+	      </ul>
+	    </li>
+	  </ul>
+	</div>
+	</center>
+  <div>
+  <p style="font: bold  6.0em/1.0em 맑은 고딕; text-align : center;">
+	실시간 미세먼지 - 광명시</p>
+  </div>
+  <br><div id = "container" style="text-align: center; margin-left: 200px;">
+  	<div class = "box1" id = "contents">
+  	<p style = "font: bold  3.0em/1.0em 맑은 고딕; color: #B40431; text-align: center">미세먼지 상태</p><br></br>
+      {% if finedust_siheung %}
+      {% for s in finedust_siheung%}
+      {%if s.city == "광명시"%}
+      	{%if s.pm10value == "nodata"%}
+			{% load staticfiles %}
+				<img src="{% static "images/nodata.png" %}" width="400px" height="400px">
+				<br></br>
+			<p style = "font: bold  2.0em/1.0em 맑은 고딕; color: #0080FF; text-align: center">데이터 없음</p>
+			{% endif %}
+      	{%if s.pm10value == "good"%}
+			{% load staticfiles %}
+				<img src="{% static "images/good.png" %}" width="400px" height="400px">
+				<br></br>
+			<p style = "font: bold  2.0em/1.0em 맑은 고딕; color: #0080FF; text-align: center">좋음</p>
+			{% endif %}
+		{%if s.pm10value == "normal"%}
+			{% load staticfiles %}
+				<img src="{% static "images/normal.png" %}" width="400px" height="400px">
+				<br></br>
+			<br><p style = "font: bold  2.0em/1.0em 맑은 고딕; color: #01DF3A; text-align: center">보통</p>
+			{% endif %}
+		{%if s.pm10value == "bad"%}
+			{% load staticfiles %}
+				<img src="{% static "images/bad.png" %}" width="400px" height="400px">
+				<br></br>
+			<br><p style = "font: bold  2.0em/1.0em 맑은 고딕; color: #FFBF00; text-align: center">나쁨</p>
+			{% endif %}
+		{%if s.pm10value == "verybad"%}
+			{% load staticfiles %}
+				<img src="{% static "images/verybad.png" %}" width="400px" height="400px">
+				<br></br>
+			<br><p style = "font: bold  2.0em/1.0em 맑은 고딕; color: #FF4000; text-align: center">매우나쁨</p>
+			{% endif %}
+	 {% endif %}
+	 {% endfor %}
+     {% endif %}
+	 </div>
+	 <div class = "box2" id= "sidebar">
+	 <p style = "font: bold  3.0em/1.0em 맑은 고딕; color: #FF0000; text-align: center">초미세먼지 상태</p><br></br>
+      {% if finedust_siheung %}
+      {% for s in finedust_siheung%}
+      {%if s.city == "광명시"%}
+      	{%if s.pm25value == "nodata"%}
+			{% load staticfiles %}
+				<img src="{% static "images/nodata.png" %}" width="400px" height="400px">
+				<br></br>
+			<p style = "font: bold  2.0em/1.0em 맑은 고딕; color: #0080FF; text-align: center">데이터 없음</p>
+			{% endif %}
+      	{%if s.pm25value == "good"%}
+			{% load staticfiles %}
+				<img src="{% static "images/good.png" %}" width="400px" height="400px">
+				<br></br>
+			<br><p style = "font: bold  2.0em/1.0em 맑은 고딕; color: #0080FF; text-align: center">좋음
+			</p></br>
+			{% endif %}
+		{%if s.pm25value == "normal"%}
+			{% load staticfiles %}
+				<img src="{% static "images/normal.png" %}" width="400px" height="400px">
+				<br></br>
+			<br><p style = "font: bold  2.0em/1.0em 맑은 고딕; color: #01DF3A; text-align: center">보통</p>
+			{% endif %}
+		{%if s.pm25value == "bad"%}
+			{% load staticfiles %}
+				<img src="{% static "images/bad.png" %}" width="400px" height="400px">
+				<br></br>
+			<br><p style = "font: bold  2.0em/1.0em 맑은 고딕; color: #FFBF00; text-align: center">나쁨</p>
+			{% endif %}
+		{%if s.pm25value == "verybad"%}
+			{% load staticfiles %}
+				<img src="{% static "images/verybad.png" %}" width="400px" height="400px">
+				<br></br>
+			<br><p style = "font: bold  2.0em/1.0em 맑은 고딕; color: #FF4000; text-align: center">매우나쁨</p>
+			{% endif %}
+	 {% endif %}
+	 {% endfor %}
+     {% endif %}
+	 </div>
+	</div>
+	</br>
+	<div>
+	 {% if finedust_siheung %}
+      {% for s in finedust_siheung%}
+      	{%if s.city == "광명시"%}
+          <br><p style = "font: bold  3.0em/1.0em 맑은 고딕; text-align: center">측정시간 : {{s.time}}</p></br>
+          <p style = "font: bold  2.0em/1.0em 맑은 고딕; text-align: center">미세먼지 : {{s.pm10}} PM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;초미세먼지 : {{s.pm25}} PM</p>       
+      	{% endif %}
+      {% endfor %}
+    {% else %}
+        <p>no data</p>
+    {% endif %}
+    
+ 	</div>
+ 
+  <div style="text-align: center;">
+  <input style="width: 30%; height: 50px; font-family:돋움; background-color:#eff7f9; border:1 solid #A0DBE4" type="button" name="측정 날씨" value="측정날씨" onclick="location.href='http://' + location.host+ '/weather'";>
+  <font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
+  <input style="width: 30%; height: 50px;font-family:돋움; background-color:#eff7f9; border:1 solid #A0DBE4" type="button" name="최근 3일간 날씨 예보" value="최근 3일간 날씨 예보" onclick="location.href='http://' + location.host+ '/weather/forecast'";></br>
+  </div>
+  </body>
+</html>
+
+
+
+
+    
+ 
