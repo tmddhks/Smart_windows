@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//smart/data.py=utf-8
+encoding//smart/pmsiheung.py=utf-8
 encoding//smart/serializers.py=utf-8
 encoding//smart/urls.py=utf-8
 encoding//smart/views.py=utf-8
@@ -7,4 +8,3 @@ encoding//templates/forecast.html=UTF-8
 encoding//templates/weather.html=UTF-8
 encoding/<project>=UTF-8
 encoding/templates=UTF-8
-encoding/weather=UTF-8

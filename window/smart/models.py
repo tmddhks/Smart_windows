@@ -23,5 +23,15 @@ class Weathermodel(models.Model):
     
     def __str__(self):
         return self.name
-        
+    
+class finedust_siheung(models.Model):
+    city = models.TextField()
+    time = models.TextField()
+    pm10 = models.TextField() #날씨 값 저장 필드
+    pm25 = models.TextField()
+    pm10value = models.TextField()
+    pm25value = models.TextField()
+       
+    def __str__(self):
+        return self.name
         
