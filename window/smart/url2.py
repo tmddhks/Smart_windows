@@ -1,0 +1,40 @@
+from django.conf.urls import url, include
+from smart.serializers import WindowViewSet, UserViewSet ,WeatherViewSet
+from . import views
+
+urlpatterns = [
+    url(r'^$', views.capturing_data, name='capturing_data'),
+    url(r'^forecast', views.weather_forecast, name='weather_forecast'),
+    url(r'^finedust_siheung', views.siheung, name='finedust_siheung'),
+    url(r'^finedust_goyang', views.goyang, name='finedust_goyang'),
+    url(r'^finedust_gapyeong', views.gapyeong, name='finedust_gapyeong'),
+    url(r'^finedust_gwacheon', views.gwacheon, name='finedust_gwacheon'),
+    url(r'^finedust_gwangmyung', views.gwangmyung, name='finedust_gwangmyung'),
+    url(r'^finedust_gwangju', views.gwangju, name='finedust_gwangju'),
+    url(r'^finedust_guri', views.guri, name='finedust_guri'),
+    url(r'^finedust_gunpo', views.gunpo, name='finedust_gunpo'),
+    url(r'^finedust_gimpo', views.gimpo, name='finedust_gimpo'),
+    url(r'^finedust_namyangju', views.namyangju, name='finedust_namyangju'),
+    url(r'^finedust_dongducheon', views.dongducheon, name='finedust_dongducheon'),
+    url(r'^finedust_bucheon', views.bucheon, name='finedust_bucheon'),
+    url(r'^finedust_sungnam', views.sungnam, name='finedust_sungnam'),
+    url(r'^finedust_suwon', views.suwon, name='finedust_suwon'),
+    url(r'^finedust_ansan', views.ansan, name='finedust_ansan'),
+    url(r'^finedust_ansung', views.ansung, name='finedust_ansung'),
+    url(r'^finedust_anyang', views.anyang, name='finedust_anyang'),
+    url(r'^finedust_yangju', views.yangju, name='finedust_yangju'),
+    url(r'^finedust_yangpyeong', views.yangpyeong, name='finedust_yangpyeong'),
+    url(r'^finedust_yeoju', views.yeoju, name='finedust_yeoju'),
+    url(r'^finedust_yeoncheon', views.yeoncheon, name='finedust_yeoncheon'),
+    url(r'^finedust_osan', views.osan, name='finedust_osan'),
+    url(r'^finedust_yongin', views.yongin, name='finedust_yongin'),
+    url(r'^finedust_hewang', views.hewang, name='finedust_hewang'),
+    url(r'^finedust_hejungbu', views.hejungbu, name='finedust_hejungbu'),
+    url(r'^finedust_icheon', views.icheon, name='finedust_icheon'),
+    url(r'^finedust_paju', views.paju, name='finedust_paju'),
+    url(r'^finedust_pyeongtack', views.pyeongtack, name='finedust_pyeongtack'),
+    url(r'^finedust_pocheon', views.pocheon, name='finedust_pocheon'),
+    url(r'^finedust_hanam', views.hanam, name='finedust_hanam'),
+    url(r'^finedust_hwasung', views.hwasung, name='finedust_hwasung'),
+    
+]
