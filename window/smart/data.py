@@ -8,11 +8,11 @@ def clear_data(num):
     try:
         cursor = db.cursor()
         sql = "delete from smart_weathermodel where id=%s"
-        print(sql)
+#         print(sql)
         cursor.execute(sql, (str(num)))
             
         db.commit()
-        print(cursor.lastrowid)
+#         print(cursor.lastrowid)
     finally:
         db.close()
 def save_record(num, time, weather, temp, mintemp, maxtemp, hudmity):
@@ -20,11 +20,11 @@ def save_record(num, time, weather, temp, mintemp, maxtemp, hudmity):
     try:
         cursor = db.cursor()
         sql = "INSERT INTO smart_weathermodel(id, time, weather, temp, mintemp, maxtemp, hudmity) VALUES(%s, %s, %s, %s, %s, %s, %s)"
-        print(sql)
+#         print(sql)
         cursor.execute(sql, (str(num), str(time), str(weather), str(temp), str(mintemp), str(maxtemp), str(hudmity)))
             
         db.commit()
-        print(cursor.lastrowid)
+#         print(cursor.lastrowid)
     finally:
         db.close()
 # 서울/경기 RSS
@@ -56,9 +56,9 @@ for data in weathers.findAll('data'): # location데이터 정리
         data.hour.string = "0"+data.hour.string
             
     hour = str(str(year) + "-" + str(month) + "-" + str(day) + " " + data.hour.string + ":" + "00")
-    print(day)
+#     print(day)
     if data.hour.string == "24":
-        print("24")
+#         print("24")
         if int(year)%400 == 0: #400으로 나누어떨어질 시 윤년
             if month == "01" or month == "03" or month == "05" or month == "07" or month == "08" or month == "10" or month == "12":
                 if int(day) == 31:
@@ -107,9 +107,9 @@ for data in weathers.findAll('data'): # location데이터 정리
 #             print("윤년")
         else: #나머진 윤년아님
             if month == "01" or month == "03" or month == "05" or month == "07" or month == "08" or month == "10" or month == "12":
-                print("month")
+#                 print("month")
                 if int(day) == 31:
-                    print("31초기화")
+#                     print("31초기화")
                     day = "00"
                     if month == "12":
                         month = "00"
@@ -123,7 +123,7 @@ for data in weathers.findAll('data'): # location데이터 정리
                         month = "00"
                         year = int(year) + 1
                     month = "0" + str(int(month) + 1)
-                    print("28초기화")
+#                     print("28초기화")
             elif month == "04" or month == "06" or month == "09" or month == "11":
                 if int(day) == 30:
                     day = "00"
@@ -131,11 +131,14 @@ for data in weathers.findAll('data'): # location데이터 정리
                         month = "00"
                         year = int(year) + 1
                     month = "0" + str(int(month) + 1)
-                    print("30초기화")
-            print("윤년아님")
-        day ="0" + str(int(day) + 1)    
+#                     print("30초기화")
+#             print("윤년아님")
+        if len(day) == 1:
+            day ="0" + str(int(day) + 1)
+        else:
+            day = str(int(day) + 1)
         
-    print(hour)
+#     print(hour)
 #             if data.wf.string == "흐리고 비":
 #                 weather = "cloudy and rainy"
 #             elif data.wf.string == "구름많고 비":
@@ -185,11 +188,4 @@ for data in weathers.findAll('data'): # location데이터 정리
 #     print(forecastdic)
     save_record(count, hour, weather, temp, mintemp, maxtemp, hudmity)
     count = count + 1
-    
-# print(time_list,"\n")
-# print(weather_list,"\n")
-# print(min_list,"\n")
-# print(max_list,"\n")
-# print(reliability_list,"\n")
-# print(count)
-# print(cities)
+
