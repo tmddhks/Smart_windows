@@ -1,5 +1,5 @@
 #-*- coding:utf-8 -*-
-from smart.models import Windowmodel, Weathermodel, finedust_siheung
+from smart.models import Windowmodel, Weathermodel
 from rest_framework import serializers, viewsets
 from django.contrib.auth.models import User
 
@@ -39,14 +39,12 @@ class UserViewSet(viewsets.ModelViewSet):
 class WeatherSerializer(serializers.ModelSerializer):
     class Meta:
         model = Weathermodel
-        fields = ('time', 'weather', 'temp', 'mintemp', 'maxtemp', 'hudmity')
+        fields = ('weather', 'mintemp', 'maxtemp', 'rating')
     def update(self, instance, validated_data):
-        instance.content = validated_data.get('time', instance.content)
         instance.content = validated_data.get('weather', instance.content)
-        instance.content = validated_data.get('temp', instance.content)
         instance.content = validated_data.get('mintemp', instance.content)
         instance.content = validated_data.get('maxtemp', instance.content)
-        instance.content = validated_data.get('humity', instance.content)
+        instance.content = validated_data.get('rating', instance.content)
         instance.save()
         return instance
 
@@ -54,22 +52,4 @@ class WeatherSerializer(serializers.ModelSerializer):
 class WeatherViewSet(viewsets.ModelViewSet):
     queryset = Weathermodel.objects.all()
     serializer_class = WeatherSerializer
-    
-class finedust_siheungSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = finedust_siheung
-        fields = ('time', 'pm10', 'pm25', 'pm10value', 'pm25value')
-    def update(self, instance, validated_data):
-        instance.content = validated_data.get('time', instance.content)
-        instance.content = validated_data.get('pm10', instance.content)
-        instance.content = validated_data.get('pm25', instance.content)
-        instance.content = validated_data.get('pm10value', instance.content)
-        instance.content = validated_data.get('pm25value', instance.content)
-        instance.save()
-        return instance
-
-# ViewSets define the view behavior.
-class finedust_siheungViewSet(viewsets.ModelViewSet):
-    queryset = finedust_siheung.objects.all()
-    serializer_class = finedust_siheungSerializer
     
