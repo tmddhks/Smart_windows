@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
+    useLibrary 'org.apache.http.legacy'
     defaultConfig {
         applicationId "com.example.kmc.teamproject"
         minSdkVersion 15
@@ -27,6 +28,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    compile group: 'com.jcraft', name: 'jsch', version: '0.1.54'
     compile 'com.ssomai:android.scalablelayout:2.1.6'
     compile 'com.google.code.gson:gson:2.8.2'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'

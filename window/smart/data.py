@@ -33,7 +33,7 @@ japi = 'http://www.weather.go.kr/wid/queryDFSRSS.jsp?zone=4139059100' # 서울/�
 response = MyURL.urlopen(japi)
 
 weathers = BeautifulSoup(response, "html.parser")
-cities = "시흥"
+
 for date in weathers.findAll('header'):
     today = date.tm.string
     year = today[0:4]
@@ -151,6 +151,12 @@ for data in weathers.findAll('data'): # location데이터 정리
 #                 weather = "sunny"
 #             else:
 #                 weather = ""
+#             if data.reliability.string == "높음":
+#                 reliability = "high"
+#             elif data.wf.string == "보통":
+#                 reliability = "normal"
+#             else:
+#                 reliability = "low"#   
     weather = data.wfkor.string
     mintemp = data.tmn.string
     maxtemp = data.tmx.string
@@ -163,13 +169,7 @@ for data in weathers.findAll('data'): # location데이터 정리
         maxtemp = "당일 최고 표기 불가"
     else:
         maxtemp = maxtemp
-    hudmity = data.reh.string
-#             if data.reliability.string == "높음":
-#                 reliability = "high"
-#             elif data.wf.string == "보통":
-#                 reliability = "normal"
-#             else:
-#                 reliability = "low"#           
+    hudmity = data.reh.string        
 
     forecastdic["time"] = hour
      

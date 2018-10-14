@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".activity.raspconnect">
+
+    <Button
+        android:id="@+id/connect"
+        android:layout_width="201dp"
+        android:layout_height="158dp"
+        android:text="connect" />
+
+    <Button
+        android:id="@+id/open"
+        android:layout_width="201dp"
+        android:layout_height="158dp"
+        android:text="open(2)" />
+
+    <Button
+        android:id="@+id/close"
+        android:layout_width="201dp"
+        android:layout_height="158dp"
+        android:text="close(8)" />
+
+</LinearLayout>

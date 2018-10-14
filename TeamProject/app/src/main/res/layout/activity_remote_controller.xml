@@ -1,44 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.RemoteControllerActivity">
-
-    <com.ssomai.android.scalablelayout.ScalableLayout
-        android:id="@+id/slWindow"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="100dp"
-        android:layout_marginRight="100dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:scaleType="centerInside"
-            android:src="@drawable/close" />
-
-    </com.ssomai.android.scalablelayout.ScalableLayout>
+    android:background="@drawable/background"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@+id/slWindow">
+        android:orientation="vertical">
 
-        <ToggleButton
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/togle"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="현재 창문 상태"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
 
-            android:textOff=""
-            android:textOn=""
-            />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:src="@drawable/close" />
 
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="0.1dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="40dp"
+        android:background="@color/white" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:gravity="center">
+
+
+            <ImageButton
+                android:id="@+id/lock"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/remote_button3"
+                android:src="@drawable/baseline_lock_black_18dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/close"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/remote_button5"
+                android:src="@drawable/baseline_fast_rewind_black_18dp" />
+
+            <ImageButton
+                android:id="@+id/helpcall"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/remote_button9"
+
+                android:src="@drawable/telephone2" />
+
+            <ImageButton
+                android:id="@+id/open"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/remote_button4"
+                android:src="@drawable/baseline_fast_forward_black_18dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/unlock"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/remote_button8"
+                android:src="@drawable/baseline_lock_open_black_18dp" />
+
+
+        </LinearLayout>
+        <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--android:gravity="center">-->
+
+        <!--<ImageButton-->
+        <!--android:layout_width="200dp"-->
+        <!--android:layout_height="70dp"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:background="@color/colorless"-->
+        <!--android:src="@drawable/remote_button2" />-->
+
+        <!--<ImageButton-->
+        <!--android:id="@+id/wopen"-->
+        <!--android:layout_width="70dp"-->
+        <!--android:layout_height="70dp"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_marginLeft="106dp"-->
+        <!--android:layout_marginStart="106dp"-->
+        <!--android:background="@drawable/remote_button2"-->
+        <!--android:src="@drawable/baseline_fast_rewind_black_18dp"-->
+        <!--android:state_pressed ="true"-->
+        <!--android:text="열기" />-->
+
+        <!--<ImageButton-->
+        <!--android:id="@+id/wclose"-->
+        <!--android:layout_width="70dp"-->
+        <!--android:layout_height="70dp"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_marginEnd="106dp"-->
+        <!--android:layout_marginRight="106dp"-->
+        <!--android:background="@drawable/remote_button2"-->
+        <!--android:src="@drawable/baseline_fast_forward_black_18dp"-->
+        <!--android:text="닫기" />-->
+
+        <!--</RelativeLayout>-->
+
+        <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="30dp"-->
+        <!--android:gravity="center">-->
+
+        <!--<ImageButton-->
+        <!--android:layout_width="200dp"-->
+        <!--android:layout_height="70dp"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:background="@color/colorless"-->
+        <!--android:src="@drawable/remote_button2" />-->
+
+        <!--<ImageButton-->
+        <!--android:layout_width="70dp"-->
+        <!--android:layout_height="70dp"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_marginLeft="106dp"-->
+        <!--android:layout_marginStart="106dp"-->
+        <!--android:background="@drawable/remote_button2"-->
+        <!--android:src="@drawable/baseline_lock_black_18dp"-->
+        <!--android:text="열기" />-->
+
+        <!--<ImageButton-->
+        <!--android:layout_width="70dp"-->
+        <!--android:layout_height="70dp"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_marginEnd="106dp"-->
+        <!--android:layout_marginRight="106dp"-->
+        <!--android:background="@drawable/remote_button2"-->
+        <!--android:src="@drawable/baseline_lock_open_black_18dp"-->
+        <!--android:text="닫기" />-->
+        <!--</RelativeLayout>-->
+
+    </LinearLayout>
+</LinearLayout>

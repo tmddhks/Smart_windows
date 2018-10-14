@@ -3,13 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/remoteController"
-        android:icon="@drawable/remote_button"
+        android:icon="@drawable/remote_button1"
         android:title="remoteController"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/helpCall"
-        android:icon="@drawable/alarm"
         android:title="helpCall"
         app:showAsAction="always" />
 </menu>

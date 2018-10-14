@@ -1,21 +1,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".activity.MainActivity">
 
     <TextView
-        android:id = "@+id/tv_WeatherInfo"
-        android:text="hello_world"
+        android:id="@+id/tv_WeatherInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        />
+        android:text="hello_world" />
+
     <Button
         android:id="@+id/next"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

@@ -2,43 +2,54 @@ package com.example.kmc.teamproject.fragment;
 
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
+import android.content.Context;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.kmc.teamproject.R;
 import com.example.kmc.teamproject.weather.CityPreference;
 import com.example.kmc.teamproject.weather.RemoteFetch;
-import com.example.kmc.teamproject.weather.Weather_search;
 
 import org.json.JSONObject;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class WeatherFragment1 extends Fragment {
+
+    static public String citychange = "ansan";
     Typeface weatherFont;
-
     TextView cityField;
-    TextView updatedField;
-    TextView detailsField;
-    TextView currentTemperatureField;
+    TextView condition;
     TextView weatherIcon;
-
+    TextView updatedField;
+    String a = "";
+    TextView pressure;
+    TextView humidity;
+    TextView currentTemperatureField;
+    TextView wind_speed;
+    TextView temp_min;
+    TextView temp_max;
     Handler handler;
 
     public WeatherFragment1() {
@@ -50,37 +61,27 @@ public class WeatherFragment1 extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
         View rootView = inflater.inflate(R.layout.fragment_weather1, container, false);
+        humidity = (TextView) rootView.findViewById(R.id.humidity);
+        pressure = (TextView) rootView.findViewById(R.id.pressure);
+        currentTemperatureField = (TextView) rootView.findViewById(R.id.current_temperature_field);
+        wind_speed = (TextView) rootView.findViewById(R.id.wind);
+        temp_min = (TextView) rootView.findViewById(R.id.temp_min);
+        temp_max = (TextView) rootView.findViewById(R.id.temp_max);
         cityField = (TextView) rootView.findViewById(R.id.city_field);
         updatedField = (TextView) rootView.findViewById(R.id.updated_field);
-        detailsField = (TextView) rootView.findViewById(R.id.details_field);
-        currentTemperatureField = (TextView) rootView.findViewById(R.id.current_temperature_field);
+        condition = (TextView) rootView.findViewById(R.id.condition);
         weatherIcon = (TextView) rootView.findViewById(R.id.weather_icon);
-//        button = (Button) rootView.findViewById(R.id.weather_search);
-//        button.setOnClickListener(myListener);
-
         weatherIcon.setTypeface(weatherFont);
+
         return rootView;
     }
-//    View.OnClickListener myListener = new View.OnClickListener()
-//    {
-//        @Override
-//        public void onClick(View v)
-//        {
-//            button.setSelected(false);
-//            Intent intent = new Intent(WeatherFragmen1.this, Weather_search.class);
-//            startActivity(intent);
-//        }
-//    };
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         weatherFont = Typeface.createFromAsset(getActivity().getAssets(), "fonts/weather.ttf");
-        updateWeatherData(new CityPreference(getActivity()).getCity());
+        updateWeatherData(new CityPreference(getActivity()).getCity(citychange));
     }
 
     private void updateWeatherData(final String city) {
@@ -115,13 +116,31 @@ public class WeatherFragment1 extends Fragment {
 
             JSONObject details = json.getJSONArray("weather").getJSONObject(0);
             JSONObject main = json.getJSONObject("main");
-            detailsField.setText(
-                    details.getString("description").toUpperCase(Locale.KOREA) +
-                            "\n" + "Humidity: " + main.getString("humidity") + "%" +
-                            "\n" + "Pressure: " + main.getString("pressure") + " hPa");
+            JSONObject wind = json.getJSONObject("wind");
+            a = details.getString("description").toUpperCase(Locale.KOREA);
+            if (a.equals("SCATTERED CLOUDS")) a = "흐림";
+            if (a.equals("CLEAR SKY")) a = "맑음";
+            if (a.equals("FEW CLOUDS")) a = "조금 흐림";
+            if (a.equals("BROKEN CLOUDS")) a = "매우 흐림";
+            if (a.equals("SHOWER RAIN")) a = "비";
+            if (a.equals("RAIN")) a = "비";
+            if (a.equals("THUNDERSTORM")) a = "천둥, 번개";
+            if (a.equals("SNOW")) a = "눈";
+            if (a.equals("MIST")) a = "안개";
+            condition.setText(a);
 
-            currentTemperatureField.setText(
-                    String.format("%.2f", main.getDouble("temp")) + " ℃");
+            //바람
+            wind_speed.setText(wind.getString("speed") + "m/s");
+            //습도
+            humidity.setText(main.getString("humidity") + "%");
+            //기압
+            pressure.setText(main.getString("pressure") + "hPa");
+            //최고온도
+            temp_max.setText(String.format("%.1f", main.getDouble("temp_max")) + "°c");
+            //최저온도
+            temp_min.setText(String.format("%.1f", main.getDouble("temp_min")) + "°c");
+            //온도
+            currentTemperatureField.setText(String.format("%.1f", main.getDouble("temp")) + "°c");
 
             DateFormat df = DateFormat.getDateTimeInstance();
             String updatedOn = df.format(new Date(json.getLong("dt") * 1000));

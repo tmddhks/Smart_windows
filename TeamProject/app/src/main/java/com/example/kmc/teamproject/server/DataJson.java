@@ -7,15 +7,27 @@ import com.google.gson.annotations.SerializedName;
  */
 
 class DataJson {
-    class Window{
-        @SerializedName("temparature")
-        public String temparature;
+    class Window {
+        @SerializedName("temperature")
+        public String temperature;
 
-        @SerializedName("moisture")
-        public String moisture;
+        @SerializedName("humidity")
+        public String humidity;
 
         @SerializedName("finedust")
         public String finedust;
+    }
+
+    class forecast {
+        @SerializedName("temp")
+        public String temperature;
+
+        @SerializedName("hudmity")
+        public String hudmity;
+
+        @SerializedName("weather")
+        public String weather;
+
     }
 
 }

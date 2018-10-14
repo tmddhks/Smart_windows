@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TeamProject</string>
+    <string name="app_name" translatable="false">Smart Window</string>
 
     <!--날씨정보-->
     <string name="weatherinfo_title">Weather info</string>
@@ -18,7 +18,7 @@
     <string name="change_city">Change city</string>
 
     <!-- Put your own APP ID here -->
-    <string name="open_weather_maps_app_id">59a42d883d2b36d9ccbc03926e659c7c</string>
+    <string name="open_weather_maps_app_id">9f168a26e28ce7070474c22388ed8145</string>
 
     <string name="weather_sunny">&#xf00d;</string>
     <string name="weather_clear_night">&#xf02e;</string>
@@ -29,7 +29,13 @@
     <string name="weather_snowy">&#xf01b;</string>
     <string name="weather_thunder">&#xf01e;</string>
     <string name="weather_drizzle">&#xf01c;</string>
+    <string name="place_not_found">날씨 데이터를 찾지 못하였습니다.</string>
+    <string name="weathera">기\n상\n청</string>
 
-    <string name="place_not_found">Sorry, no weather data found.</string>
-
+    <string name="humidity">습도</string>
+    <string name="temperature">온도</string>
+    <string name="pressure">기압</string>
+    <string name="temp_max">최고온도</string>
+    <string name="temp_min">최저온도</string>
+    <string name="wind">바람</string>
 </resources>

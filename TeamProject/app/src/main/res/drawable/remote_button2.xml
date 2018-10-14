@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <item>
+    <layer-list>
+    <item android:top="3dp">
+        <shape>
+            <corners
+                android:bottomLeftRadius="200dp"
+                android:bottomRightRadius="190dp"
+                android:topLeftRadius="200dp"
+                android:topRightRadius="180dp"
+
+                />
+            <solid android:color="#1f000000" />
+        </shape>
+    </item>
+    <item android:bottom="3dp">
+        <shape>
+            <corners android:bottomLeftRadius="200dp" android:bottomRightRadius="200dp" android:topLeftRadius="200dp" android:topRightRadius="200dp" />
+            <solid android:color="@color/white" />
+            <gradient android:angle="270" android:endColor="#FFFFFF" android:centerColor="#DDDDDD" android:startColor="#ffffff" />
+        </shape>
+    </item>
+    </layer-list>
+    </item>
+
+</selector>

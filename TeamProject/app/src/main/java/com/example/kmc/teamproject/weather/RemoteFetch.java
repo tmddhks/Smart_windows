@@ -1,5 +1,6 @@
 package com.example.kmc.teamproject.weather;
 
+
 import android.content.Context;
 
 import com.example.kmc.teamproject.R;
@@ -19,16 +20,16 @@ public class RemoteFetch {
     public static JSONObject getJSON(Context context, String city) {
         try {
             URL url = new URL(String.format(OPEN_WEATHER_MAP_API, city));
-            HttpURLConnection connection =
-                    (HttpURLConnection) url.openConnection();
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            //url 연결 객체 생성
 
-            connection.addRequestProperty("x-api-key",
-                    context.getString(R.string.open_weather_maps_app_id));
+            connection.addRequestProperty("x-api-key", context.getString(R.string.open_weather_maps_app_id));
 
-            BufferedReader reader = new BufferedReader(
-                    new InputStreamReader(connection.getInputStream()));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 
-            StringBuffer json = new StringBuffer(1024);
+            StringBuilder json = new StringBuilder(1024);
+            //문자열을 담기 위한 객체
+
             String tmp = "";
             while ((tmp = reader.readLine()) != null)
                 json.append(tmp).append("\n");
@@ -36,12 +37,9 @@ public class RemoteFetch {
 
             JSONObject data = new JSONObject(json.toString());
 
-            // This value will be 404 if the request was not
-            // successful
             if (data.getInt("cod") != 200) {
                 return null;
             }
-
             return data;
         } catch (Exception e) {
             return null;
